@@ -17,6 +17,10 @@ type Person struct{
 func (p Person) greet() string{
 	return fmt.Sprintf("Hello my name is %s", p.name)
 }
+func doGreeting(h Human){
+	fmt.Println(h.greet())
+}
+
 
 type Developer struct{
 	name string
@@ -57,8 +61,8 @@ func main(){
 	fmt.Println("===Interfaces===")
 
 	// Interfaces are implemented implicitly
-	p := Person{name: "Chris"}
-	fmt.Println(p.greet())
+	p := Person{name:"Chris"}
+	doGreeting(p)
 	// The Empty interface specifies 0 methods, this can hold values of any type, since every type implements 0 functions.
 	var i interface{}
 	fmt.Println(i)
@@ -87,7 +91,7 @@ func main(){
 	fmt.Println("===Methods on Types===")
 
 	d := Developer{name: "Garvin"}
-	fmt.Println(d.greet())
+	doGreeting(d)
 	fmt.Println(d.returnName())
 	d.changeName("Madeline")
 	fmt.Println(d.returnName())
@@ -101,6 +105,7 @@ func main(){
 	*/
 
 	// Go is a run as happy path language.
+	
 	newDev := Developer{name: "Suraj"}
 	err := newDev.setFavoritelanguage("C#")
 	if err != nil{

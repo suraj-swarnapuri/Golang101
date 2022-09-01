@@ -39,6 +39,7 @@ func main(){
 	default:
 		println("Default")
 	}
+	
 	// alternative to if-elseif-else chains
 	a = 10
 	switch {

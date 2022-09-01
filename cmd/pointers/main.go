@@ -25,7 +25,7 @@ func main(){
 	a := [8]int{1,2,3,4,5,6,7,8}
 	fmt.Println(a)
 	fmt.Println("=========Slices================")
-
+	// like List[T] in C#
 	s := a[1:4]
 	fmt.Println(s)
 	// slices are references to the underlying array
@@ -44,6 +44,7 @@ func main(){
 		fmt.Println(i,v)
 	}
 	fmt.Println("=========Maps================")
+
 	m := make(map[string]int) // create a nil map
 	m["a"] = 1 // insert
 	fmt.Println(m["a"]) // lookup
@@ -52,6 +53,13 @@ func main(){
 		fmt.Println(v)
 	} else {
 		fmt.Println("a not found")
+	}
+	m["a"] = 1
+	m["b"] = 2
+	m["c"] = 3
+	
+	for k,v:= range m{
+		fmt.Println(k,v)
 	}
 	
 }

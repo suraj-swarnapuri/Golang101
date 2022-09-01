@@ -17,6 +17,7 @@ type Node[T comparable] struct {
 	next *Node[T]
 	val  T
 }
+
 func (n *Node[T]) PrintList(){
 	for{
 		if n != nil{

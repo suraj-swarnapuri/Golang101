@@ -14,7 +14,7 @@ func say(s string){
 
 func main(){
 	fmt.Println("======Go Routines======")
-	// goroutine is a lightweight thread managed by the Go routine
+	// goroutine is a lightweight thread managed by the Go runtime
 	go say("Hello")
 	say("world")
 
