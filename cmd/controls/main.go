@@ -6,6 +6,7 @@ func main(){
 	for i := 0; i < 10; i++ {
 		println(i)
 	}
+	
 	println("=========While Loop================")
 	// For is Gos's while loop
 	sum := 0 

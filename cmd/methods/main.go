@@ -94,10 +94,10 @@ func main(){
 	fmt.Println("===Error Handling===")
 
 	/*
-		error type is a built-in interface type in the Go programming language.
-			type error interface {
-				Error() string
-			}
+		// error type is a built-in interface type in the Go programming language.
+		//	type error interface {
+		//		Error() string
+		//	}
 	*/
 
 	// Go is a run as happy path language.
@@ -107,11 +107,5 @@ func main(){
 		panic(err)
 	}
 	fmt.Println(newDev.greet())
-
-
-
-
-
-	
 
 }

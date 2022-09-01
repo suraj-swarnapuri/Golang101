@@ -12,14 +12,12 @@ func Index[T comparable](s []T, x T)int{
 	}
 	return -1
 }
-// List represents a singly-linked list that holds
-// values of any type.
+
 type Node[T comparable] struct {
 	next *Node[T]
 	val  T
 }
 func (n *Node[T]) PrintList(){
-	
 	for{
 		if n != nil{
 			println(n.val)
@@ -29,7 +27,6 @@ func (n *Node[T]) PrintList(){
 		n = n.next
 	}
 }
-
 
 func main(){
 	fmt.Println("=========Generic Functions================")
@@ -48,5 +45,5 @@ func main(){
 	sn.next = &Node[string]{next: nil, val: "b"}
 	sn.next.next = &Node[string]{next: nil, val: "c"}
 	sn.PrintList()
-	
+
 }
