@@ -4,6 +4,8 @@ import (
 	"fmt"
 )
 
+// example: https://github.com/github/ghae-quota-monitor/blob/31e659553fb4ce39c6c773e79ea69d617cd94c76/internal/retry/retry.go#L41
+
 func Index[T comparable](s []T, x T)int{
 	for i, v := range s{
 		if v == x{

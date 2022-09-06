@@ -13,14 +13,13 @@ type Person struct{
 	name string
 }
 
-
-func (p Person) greet() string{
-	return fmt.Sprintf("Hello my name is %s", p.name)
-}
 func doGreeting(h Human){
 	fmt.Println(h.greet())
 }
 
+func (p Person) greet() string{
+	return fmt.Sprintf("Hello my name is %s", p.name)
+}
 
 type Developer struct{
 	name string

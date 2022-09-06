@@ -5,66 +5,68 @@ import (
 	"time"
 )
 
-func say(s string){
-	for i:= 0; i<5; i++{
-		time.Sleep(100 * time.Millisecond)
-		fmt.Println(s)
-	}
+// example https://github.com/github/ghae-quota-monitor/blob/31e659553fb4ce39c6c773e79ea69d617cd94c76/internal/config/config.go#L110
+
+func worker(id int) {
+    fmt.Printf("Worker %d starting\n", id)
+
+    time.Sleep(time.Second)
+    fmt.Printf("Worker %d done\n", id)
 }
 
 func main(){
-	fmt.Println("======Go Routines======")
-	// goroutine is a lightweight thread managed by the Go runtime
-	go say("Hello")
-	say("world")
 
-	fmt.Println("=======Channels========")
+	// Go routines are lightweight threads of execution that are managed by the go runtime
+	fmt.Println("===Go Routines===")
 
-	chnl := make(chan string)
-	go func(){
-		for i :=0; i<2; i++{
-			chnl <- "a"
-			time.Sleep(10 * time.Second)
+	/*go func(){
+		for i:=0; i<4; i++{
+			time.Sleep(100 * time.Millisecond)
+			fmt.Println("Hello from a go routine")
 		}
 	}()
 
-	for i:=0; i<2; i++{
-		fmt.Println(<-chnl)
-	}	
-	
-	
-	fmt.Println("=====Buffered Channel======")
-	// a sender can close a channel to indicate that no more values will be sent.
-	fib := func(n int, c chan int){
-		x,y :=0 ,1
-		for i :=0; i<n; i++{
-			c <- x
-			x,y = y, x+y
+	for i:=0; i<4; i++{
+		time.Sleep(100 * time.Millisecond)
+		fmt.Println("Hello from main thread")
+	} */
+
+	// sync go routines
+	/*
+	var wg sync.WaitGroup
+	for i:=0; i<4; i++{
+		wg.Add(1)
+		go func(i int){
+			defer wg.Done()
+			worker(i)
+		}(i)
+	}
+	wg.Wait()*/
+
+
+
+/*
+	a := make(chan bool, 10) // buffered channel
+	b := make(chan bool, 10)
+	c := make(chan bool, 10)
+
+	for i := 0; i < 10; i++ {
+		a <- true
+		b <- true
+		c <- true
+	}
+
+	for i := 0; i < 10; i++ {
+
+		select {
+		case <-a:
+			fmt.Println("a")
+		case <-b:
+			fmt.Println("b")
+		case <-c:
+			fmt.Println("c")
 		}
-		close(c)
+		fmt.Println("__")
 	}
-
-	c := make(chan int, 10) // buffer channel
-	go fib(cap(c),c)
-	for i:= range c{ // recieves values from the channel until closed
-		fmt.Println(i)
-	}
-
-	fmt.Println("========Select=======")
-	tick := time.Tick(100 * time.Millisecond)
-	boom := time.After(500 * time.Millisecond)
-	for{
-		select{ // will block until a case is satisfied
-		case <- tick:
-			fmt.Println("tick.")
-		case <- boom:
-			fmt.Println("BOOM!")
-			return
-		default:
-			fmt.Print(" ")
-			time.Sleep(50 * time.Millisecond)
-			
-		}
-	}
-
+*/
 }
