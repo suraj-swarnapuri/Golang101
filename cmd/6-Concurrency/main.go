@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"sync"
 	"time"
 )
 
@@ -19,7 +20,7 @@ func main(){
 	// Go routines are lightweight threads of execution that are managed by the go runtime
 	fmt.Println("===Go Routines===")
 
-	/*go func(){
+	go func(){
 		for i:=0; i<4; i++{
 			time.Sleep(100 * time.Millisecond)
 			fmt.Println("Hello from a go routine")
@@ -29,23 +30,23 @@ func main(){
 	for i:=0; i<4; i++{
 		time.Sleep(100 * time.Millisecond)
 		fmt.Println("Hello from main thread")
-	} */
+	} /**/
 
 	// sync go routines
-	/*
+	
 	var wg sync.WaitGroup
 	for i:=0; i<4; i++{
-		wg.Add(1)
+		wg.Add(1) // add a wait group for each go routine called.
 		go func(i int){
 			defer wg.Done()
 			worker(i)
 		}(i)
 	}
-	wg.Wait()*/
+	wg.Wait() /**/
 
 
 
-/*
+
 	a := make(chan bool, 10) // buffered channel
 	b := make(chan bool, 10)
 	c := make(chan bool, 10)
@@ -56,6 +57,7 @@ func main(){
 		c <- true
 	}
 
+	// select is a blocking statment that waits for a channel to signal.
 	for i := 0; i < 10; i++ {
 
 		select {
@@ -68,5 +70,5 @@ func main(){
 		}
 		fmt.Println("__")
 	}
-*/
+/**/
 }
