@@ -9,3 +9,4 @@ Demo over the basics of the Golang language.
 5. [Generics](/cmd/5-Generics/main.go)
 6. [Concurrency](/cmd/6-Concurrency/main.go)
 7. [Testing](/cmd/7-Testing/calc_test.go)
+8. [HTTP](/cmd/8-Http/main.go)
