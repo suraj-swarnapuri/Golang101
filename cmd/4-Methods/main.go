@@ -39,6 +39,7 @@ func (d Developer) greet()string{
 	d.name = "suraj"
 	return fmt.Sprintf("fmt.Println(\"Hello my name is %s\")", d.name)
 } 
+
 func (d *Developer) setFavoritelanguage(language string)error{
 	if language != "Go"{
 		return &DevError{time.Now(), "Go is the only language I know"}
